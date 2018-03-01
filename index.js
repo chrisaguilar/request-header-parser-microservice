@@ -12,4 +12,8 @@ app.get('/', (req, res) =>
     })
 );
 
-app.listen(app.get('port'), () => console.log(`/header-parser listening on port ${app.get('port')}`));
+if (process.env.SINGLE) {
+    app.listen(app.get('port'), () => console.log(`/header-parser listening on ${app.get('port')}`));
+} else {
+    module.exports = app;
+}
